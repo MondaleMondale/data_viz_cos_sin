@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!--    <link rel="stylesheet" href="my_css.css">-->
+</head>
+
+<body>
+    <svg id="" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+        <svg id="nested_SVG"></svg>
+
+
+    </svg>
+
+
+    <script>
+        var step = 2 * Math.PI / 50; // see note 1
+        var h = 100;
+        var k = 100;
+        var r = 50;
+
+        //        ctx.beginPath(); //tell canvas to start a set of lines
+
+        for (var theta = 0; theta < 2 * Math.PI; theta += step) {
+            let myDot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            //        let myNewPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            myDot.setAttribute("r", "1");
+            myDot.setAttribute("fill", "red");
+
+
+            var x = h + r * Math.cos(theta);
+            var y = k - r * Math.sin(theta); //note 2.
+            //            ctx.lineTo(x, y);
+            //        ctx.fillRect(x, y, 2, 2);
+            myDot.setAttribute("cx", x);
+            myDot.setAttribute("cy", y);
+            document.querySelector("#nested_SVG").appendChild(myDot);
+        }
+    </script>
+</body>
+</html>

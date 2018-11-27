@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw Circle</title>
+
+</head>
+
+<body>
+   <a href="https://www.mathopenref.com/coordcirclealgorithm.html">Algorithm to draw circles and ellipses</a>
+   <canvas width="400" height="400"></canvas>
+   
+    <script>
+        let canvas = document.querySelector("canvas");
+        var ctx = canvas.getContext("2d");
+
+        var step = 2 * Math.PI / 50; // see note 1
+        var h = 150;
+        var k = 150;
+        var r = 50;
+
+        ctx.beginPath(); //tell canvas to start a set of lines
+
+        for (var theta = 0; theta < 2 * Math.PI; theta += step) {
+//            r+=1;
+            var x = h + r * Math.cos(theta);
+            var y = k - r * Math.sin(theta); //note 2.
+//            ctx.lineTo(x, y);
+            ctx.fillRect(x,y,2,2);
+        }
+
+        ctx.closePath(); //close the end to the start point
+        ctx.stroke(); //actually draw the accumulated lines
+
+    </script>
+</body>
+</html>
