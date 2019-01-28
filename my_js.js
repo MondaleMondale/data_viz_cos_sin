@@ -24,7 +24,7 @@ async function getJSON() {
     let myBezierArr = [];
 
     let myBezierPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-//    console.log(bezier_my_coordinates());
+    //    console.log(bezier_my_coordinates());
 
 
     for (let theta = 0; theta < 2 * Math.PI; theta += step) {
@@ -34,8 +34,13 @@ async function getJSON() {
         let myDot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
 
         myDot.setAttribute("r", "1");
-        myDot.setAttribute("fill", "red");
 
+        myDot.setAttribute("fill", "red");
+        // debug:
+        if (theta == 0) {
+
+            myDot.setAttribute("fill", "green");
+        }
         let x = h + r * Math.cos(theta);
         let y = k - r * Math.sin(theta); //note 2.
 
@@ -44,7 +49,7 @@ async function getJSON() {
         myDot.setAttribute("cy", y);
         document.querySelector("#nested_SVG").appendChild(myDot);
 
-        myBezierArr.push([x,y]);
+        myBezierArr.push([x, y]);
 
         i++;
 
@@ -52,11 +57,18 @@ async function getJSON() {
 
 
 
-//    myBezierArr.push(myBezierArr[0]);
+    //    myBezierArr.push(myBezierArr[0]);
 
-    myBezierPath.setAttribute("d",bezier_my_coordinates(myBezierArr));
-    console.log( myBezierPath.getAttribute("d"));
-    myBezierPath.setAttribute("class","myBezierPath");
+    myBezierPath.setAttribute("d", bezier_my_coordinates(myBezierArr));
+    //    console.log( "d'et: " , myBezierPath.getAttribute("d"));
+    console.log("myBezierPath: ", myBezierPath);
+    console.log("myBezierPath: ", myBezierPath.getAttribute("d").pathSegList);
+
+
+
+
+    myBezierPath.setAttribute("class", "myBezierPath");
+    //    myBezierPath.setAttribute("stroke","red");
     document.querySelector("#nested_SVG").appendChild(myBezierPath);
 
 

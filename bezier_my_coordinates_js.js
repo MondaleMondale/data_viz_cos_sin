@@ -1,13 +1,13 @@
-        const points = [
-            [5, 10],
-            [10, 40],
-            [40, 30],
-            [60, 5],
-            [90, 45],
-            [120, 10],
-            [150, 45],
-            [200, 10]
-        ];
+//        const points = [
+//            [5, 10],
+//            [10, 40],
+//            [40, 30],
+//            [60, 5],
+//            [90, 45],
+//            [120, 10],
+//            [150, 45],
+//            [200, 10]
+//        ];
 
         // Render the svg <path> element
         // I:  - points (array): points coordinates
@@ -98,8 +98,13 @@
         function bezier_my_coordinates(path_arr) {
 
 
-            path_arr.push(path_arr[0]);
+//           path_arr.push(path_arr[0]);
+//            path_arr.push(path_arr[1]);
+
+            path_arr.unshift(path_arr[path_arr.length-1]);
             path_arr.unshift(path_arr[path_arr.length-2]);
+//            path_arr.unshift(path_arr[path_arr.length-3]);
+//            path_arr.unshift(path_arr[path_arr.length-1]);
             //    path_arr.push(path_arr[0]);
             //    klausesSidstePunkt = path_arr[path_arr.length - 1];
             //    indexOfLastCoord = path_arr.length-1;
